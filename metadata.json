@@ -1,0 +1,6 @@
+{
+  "name": "Sistem Manajemen Booking Barbershop",
+  "description": "Aplikasi web Sistem Manajemen Booking Barbershop dengan Halaman Pelanggan, Dashboard Admin, dan Panduan Kode Laravel Lengkap.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
