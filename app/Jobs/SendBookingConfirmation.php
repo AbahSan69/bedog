@@ -43,7 +43,7 @@ class SendBookingConfirmation implements ShouldQueue
             'x-api-key' => config('services.wa_gateway.key'),
         ])->post(config('services.wa_gateway.url') . '/send-document', [
             'target'   => $target,
-            'message'  => "Halo {$this->booking->nama}! 🎉\n\nBooking Anda di *BarberCraft* telah *dikonfirmasi*.\n\nDetail lengkap ada di file terlampir. Sampai jumpa!",
+            'message'  => "Halo {$this->booking->nama}! 🎉\n\nBooking Anda di *Golden Barber* telah *dikonfirmasi*.\n\nDetail lengkap ada di file terlampir. Sampai jumpa!",
             'fileUrl'  => $fileUrl,
             'fileName' => "Booking-{$this->booking->id}.pdf",
         ]);
