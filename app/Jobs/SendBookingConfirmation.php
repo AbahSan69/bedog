@@ -28,8 +28,7 @@ class SendBookingConfirmation implements ShouldQueue
         $filename = 'booking-' . $this->booking->id . '-' . time() . '.pdf';
         Storage::disk('public')->put('bookings/' . $filename, $pdf->output());
 
-        $fileUrl = asset('storage/bookings/' . $filename);
-
+        $fileUrl = route('booking.file', ['filename' => $filename]);
         // 2. Normalisasi nomor HP ke format internasional (62xxx)
         $target = preg_replace('/[^0-9]/', '', $this->booking->no_hp);
         if (str_starts_with($target, '0')) {

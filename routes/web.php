@@ -17,6 +17,19 @@ use App\Http\Controllers\Admin\CapsterController;
 Route::get('/', [BookingController::class, 'index'])->name('booking.index');
 Route::post('/booking', [BookingController::class, 'store'])->name('booking.store');
 
+// --- FILE PDF BOOKING (untuk diakses gateway WhatsApp) ---
+Route::get('/booking-file/{filename}', function ($filename) {
+    $path = 'bookings/' . $filename;
+
+    if (!\Illuminate\Support\Facades\Storage::disk('public')->exists($path)) {
+        abort(404);
+    }
+
+    return response(\Illuminate\Support\Facades\Storage::disk('public')->get($path), 200)
+        ->header('Content-Type', 'application/pdf')
+        ->header('Content-Disposition', 'inline; filename="' . $filename . '"');
+})->name('booking.file');
+
 // --- AUTHENTIKASI ADMIN ---
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.post');
